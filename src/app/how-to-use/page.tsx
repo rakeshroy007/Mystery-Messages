@@ -32,7 +32,6 @@ const ManualPage: React.FC = () => {
               <li>Go to the Sign-Up page.</li>
               <li>Fill in your details and submit the form.</li>
               <li>Verify your email to activate your account.</li>
-              <p className='ml-5 text-red-600 text-sm'> (Due to email API expiry issues, this last process may not happen.)</p>
             </ul>
           </CardContent>
         </Card>

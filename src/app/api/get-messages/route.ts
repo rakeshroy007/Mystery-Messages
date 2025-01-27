@@ -66,7 +66,7 @@ export async function GET(request: Request) {
         return Response.json(
             {
                 success: true,
-                message: "YOU LIVE NOW!",
+                message: "YOU ARE LIVE!",
                 messages: user[0].messages      // ➡️ aggregation pipeline return type gives us  array 
             },
             {

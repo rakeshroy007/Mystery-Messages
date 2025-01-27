@@ -16,14 +16,14 @@ import { Mail } from "lucide-react"
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white flex flex-col">
      {/* Main content */}
      <Navbar />
-    <main className="flex-grow flex flex-col items-center justify-center px-6 md:px-24 py-12 bg-gray-100">
+    <main className="flex-grow flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-white px-6 md:px-24 py-12 bg-gray-100">
       <section className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Dive into the World of Anonymous Conversations</h1>
         <p className="mt-3 text-lg md:text-xl text-gray-700">
-          Explore Mystery Message - Where your identity remains a secret.
+          Explore Mystery Message - Where your identity remains a secret.  &#128521;
         </p>
       </section>
 
@@ -57,8 +57,8 @@ const Home = () => {
       </Carousel>
     </main>
     <footer className="text-center p-4 md:p-6">
-          ©️ 2025 Mystry Message. All rights reserved.
-    </footer>
+        Designed and Developed with &#10084;
+      </footer>
     </div>
   )
 }

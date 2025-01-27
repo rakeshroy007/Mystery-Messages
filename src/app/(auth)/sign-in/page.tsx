@@ -58,6 +58,10 @@ const page = () => {
       }
     } catch (error: any) {
       console.error("Error in signup of user", error)
+      toast({
+        title: "Login Issue",
+        variant: 'destructive'
+      })
     } finally {
       setIsClicked(false)
     }

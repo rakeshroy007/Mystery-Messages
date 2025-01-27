@@ -13,7 +13,7 @@ const Navbar = () => {
     const user: User = session?.user as User      
 
     return (
-        <nav className="p-4 mx-3 my-2 md:p-6 shadow-md bg-[#c8daf7] rounded-md text-black">
+        <nav className="p-4 mx-3 my-2 md:p-6 shadow-md bg-gradient-to-b from-blue-200 to-slate-100  rounded-md text-black">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 <a
                     className="text-2xl font-bold mb-4 md:mb-0"
@@ -55,7 +55,7 @@ const Navbar = () => {
                             href="/how-to-use"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full md:w-auto bg-blue-500 text-white hover:bg-blue-600 transition px-4 py-2 rounded text-center"
+                            className="w-full md:w-auto bg-blue-500 shadow-lg shadow-blue-500/50 text-white hover:bg-blue-600 transition px-4 py-2 rounded text-center"
                         >
                             How to Use
                         </a>

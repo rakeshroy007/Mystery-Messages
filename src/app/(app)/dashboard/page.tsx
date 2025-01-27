@@ -158,7 +158,7 @@ const page = () => {
 
 
   return (
-    <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-5 bg-gray-100 rounded-xl shadow-md w-full max-w-6xl">
+    <div className="my-8 mx-4 md:mx-8 lg:mx-auto bg-gradient-to-r from-blue-100 to-gray-100 p-5 rounded-xl shadow-md w-full max-w-6xl">
       {/* Header Section */}
       <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
         User Dashboard

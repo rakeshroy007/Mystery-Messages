@@ -116,7 +116,7 @@ const page = () => {
   }
 
   return (
-    <div className="container mx-auto mt-4 mb-4 p-8 bg-gradient-to-r from-gray-300 via-blue-100 to-purple-100 rounded-lg shadow-lg max-w-5xl">
+    <div className="container mx-auto mt-4 mb-4 p-8 bg-gradient-to-r from-gray-300 via-blue-100 to-purple-50 rounded-lg shadow-lg max-w-5xl">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
         Public Profile Link
       </h1>
@@ -164,7 +164,7 @@ const page = () => {
       <div className="space-y-6 my-8">
         <div className="space-y-4">
           {isSuggestLoading ? (
-            <Button disabled className="bg-gray-300 text-gray-700 flex items-center">
+            <Button disabled className="bg-green-300 text-gray-700 flex items-center">
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
               Please wait
             </Button>
