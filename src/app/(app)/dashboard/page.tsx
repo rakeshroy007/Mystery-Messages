@@ -29,7 +29,7 @@ const Page = () => {
     setMessages(messages.filter((message) => message._id !== messageId))
   }
 
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
 
   const form = useForm({
