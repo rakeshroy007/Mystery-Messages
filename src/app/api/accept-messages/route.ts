@@ -82,7 +82,7 @@ export async function GET(request: Request) {
         return Response.json(
             {
                 success: false,
-                message: "Not Authenticated"
+                message: "Not Authenticated."
             },
             {
                 status: 401

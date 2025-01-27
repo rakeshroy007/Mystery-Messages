@@ -7,7 +7,7 @@ import { User } from 'next-auth'
 
 export async function DELETE(request: Request, {params}:{params: {messageid: string}}) {    
     
-    const { messageid } = await Promise.resolve(params)
+    const { messageid } = params;
     await dbConnect()
     const session = await getServerSession(authOptions)       
     const user: User = session?.user as User
@@ -42,7 +42,7 @@ export async function DELETE(request: Request, {params}:{params: {messageid: str
         return Response.json(
             {
                 success: true,
-                message: "Message Delete Successfully"
+                message: "Message Deleted Successfully"
             }, 
             { status: 200 }
         )
