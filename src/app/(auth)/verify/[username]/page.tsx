@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/hooks/use-toast'
 import { verifySchema } from '@/schemas/verifySchema'
@@ -44,7 +44,7 @@ const VerifyAccount = () => {
         } catch (error) {
             console.error("Error in signup of user", error)
             const axiosError = error as AxiosError<ApiResponse>;
-            let errorMessage = axiosError.response?.data.message
+            const errorMessage = axiosError.response?.data.message
             toast({
                 title: "Signup failed",
                 description: errorMessage,

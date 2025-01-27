@@ -16,7 +16,7 @@ import { useState } from "react"
 
 
 
-const page = () => {
+const Page = () => {
   
   const { toast } = useToast()
   const router = useRouter()
@@ -56,7 +56,7 @@ const page = () => {
         setIsClicked(false)
         router.replace("/dashboard")
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error in signup of user", error)
       toast({
         title: "Login Issue",
@@ -120,7 +120,7 @@ const page = () => {
 
         <div className="text-center mt-4">
             <p>
-                Don't have a account?{' '}
+                Don&apos;t have a account?{' '}
                 <Link href="/sign-up" className="text-blue-600 hover:text-blue-800">
                     Sign up
                 </Link>
@@ -131,4 +131,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

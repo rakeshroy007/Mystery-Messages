@@ -36,7 +36,7 @@ const parseStringMessages = (messageString: string): string[] => {
 };
 
 
-const page = () => {
+const Page = () => {
 
   const { toast } = useToast()
   const params = useParams<{ username: string }>()
@@ -202,4 +202,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

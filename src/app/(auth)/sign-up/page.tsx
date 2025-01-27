@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation"
 import { signUpSchems } from "@/schemas/signUpSchema"
 import axios, { AxiosError } from 'axios'
 import { ApiResponse } from "@/types/ApiResponse"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
@@ -19,7 +19,7 @@ import { Loader2 } from "lucide-react"
 
 
 
-const page = () => {
+const Page = () => {
   const [username, setUsername] = useState('') 
   const [usernameMessage, setUsernameMessage] = useState('')          
   const [isCheckingUsername, setIsCheckcingUsername] = useState(false) 
@@ -78,7 +78,7 @@ const page = () => {
     } catch (error) {
       console.error("Error in signup of user", error)
       const axiosError = error as AxiosError<ApiResponse>;
-      let errorMessage = axiosError.response?.data.message
+      const errorMessage = axiosError.response?.data.message
       toast({
         title: "Signup failed",
         description: errorMessage,
@@ -179,4 +179,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
