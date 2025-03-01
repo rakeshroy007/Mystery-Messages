@@ -6,7 +6,7 @@ import { ApiResponse } from '@/types/ApiResponse'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios, { AxiosError } from 'axios'
 import { useParams } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
@@ -38,6 +38,7 @@ const parseStringMessages = (messageString: string): string[] => {
 
 const Page = () => {
 
+  const [dynamicPrompt, setDynamicPrompt] = useState("");
   const { toast } = useToast()
   const params = useParams<{ username: string }>()
   const username = params?.username ?? ""
@@ -49,7 +50,7 @@ const Page = () => {
     },
   })
 
-  const prompt = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous social messaging platform, like Qooh.me, and should be suitable for a diverse audience. Avoid personal or sensitive topics, focusing instead on universal themes that encourage friendly interaction. For example, your output should be structured like this: 'What's a hobby you've recently started?||If you could have dinner with any historical figure, who would it be?|| What's a simple thing that makes you happy?'. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment.";
+  const prompt = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous social messaging platform, like Qooh.me, and should be suitable for a diverse audience. Avoid personal or sensitive topics, focusing instead on universal themes that encourage friendly interaction. For example, your output should be structured like this: 'What's a hobby you've recently started?||If you could have dinner with any historical figure, who would it be?|| What's a simple thing that makes you happy?'. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Each time create a different one. ";
 
 
   const { watch, setValue } = form
@@ -65,18 +66,21 @@ const Page = () => {
 
   const suggestMessages = async () => {
     try {
+      console.log(dynamicPrompt)
       setIsSuggestLoading(true)
       const response = await fetch("/api/gemini-suggest-messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ body: prompt }),
+        body: JSON.stringify({ body: dynamicPrompt }),
       });
 
       const data = await response.json();
       if (response.ok) {
         setGeneratedMessages(data.output);
+        console.log("data: ", data)
+        console.log("Parse: ",parseStringMessages(data.output))
       } else {
         setGeneratedMessages(data.error || "An error occurred while fetching data.");
       }
@@ -115,12 +119,29 @@ const Page = () => {
     }
   }
 
+  useEffect(() => {
+    const updatePrompt = () => {
+      if (window.innerWidth <= 768) { // md and below
+        setDynamicPrompt(prompt + " And the generated text within 70 characters.");
+      } else {
+        setDynamicPrompt(prompt);
+      }
+    };
+
+    updatePrompt(); // Run on initial load
+    window.addEventListener("resize", updatePrompt); // Listen for screen resize
+
+    return () => {
+      window.removeEventListener("resize", updatePrompt);
+    };
+  }, []);
+
   return (
-    <div className="container mx-auto mt-4 mb-4 p-8 bg-gradient-to-r from-gray-300 to-blue-200 rounded-lg shadow-lg max-w-5xl">
+    <div className="container my-5 mx-auto p-8 bg-gradient-to-r from-gray-300 to-blue-200 rounded-lg shadow-lg max-w-5xl overflow-x-hidden">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
         Public Profile Link
       </h1>
-      
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
