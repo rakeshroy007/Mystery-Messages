@@ -216,7 +216,8 @@ const Page = () => {
       </div>
 
       {/* Messages Section */}
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[250px] overflow-auto no-scrollbar"
+      >
         {messages.length > 0 ? (
           messages.map((message, index) => (
             <MessageCard
